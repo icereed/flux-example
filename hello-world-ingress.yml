@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: minio-ingress
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/proxy-body-size: 1024m
+spec:
+  tls:
+  - hosts:
+    - hello.sarah-und-dave-2018.de
+    secretName: hello-ingress-tls
+  rules:
+  - host: hello.sarah-und-dave-2018.de
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: helloworld
+          servicePort: http
