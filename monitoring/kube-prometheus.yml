@@ -6,6 +6,7 @@
     namespace: monitoring
     labels:
       chart: kube-prometheus
+      test: "true"
   spec:
     chartGitPath: kube-prometheus
     values: {}
